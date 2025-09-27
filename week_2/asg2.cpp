@@ -108,13 +108,13 @@ void Identity(double Matrix[3][3]) {
     }
 }
 
-void doMxM(double A[3][3], double B[3][3], double C[3][3]) {
+void doMxM(double A[3][3], double B[3][3], double S[3][3]) {
     // TODO: Multiply two 3x3 matrices: C = A × B
-    
-}
-
-void doMxV(double A[3][3], double B[3], double S[3]) {
-    // TODO: Multiply matrix A by vector B, store result in S
+    for (int i=0;i<3;i++) {
+        for (int j=0;j<3;j++) {
+            S[i][j] = A[i][0]*B[0][j] + A[i][1]*B[1][j] + A[i][2]*B[2][j];
+        }
+    }
 }
 
 void displayM(double A[3][3]) {
