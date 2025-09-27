@@ -1,7 +1,7 @@
 const canvas = document.getElementById('myCanvas');
       const ctx = canvas.getContext('2d');
-      canvas.width = 500;
-      canvas.height = 300;
+      canvas.width = 1000;
+      canvas.height = 800;
       let startPoint = null;
 
       canvas.addEventListener('click', (event) => {
@@ -25,9 +25,10 @@ const canvas = document.getElementById('myCanvas');
         for (j in hi[i]) {
             hi[i][j] = (hi[i][j]+3)*25
         }
-        bsh(hi[i][0], hi[i][1], hi[i][2], hi[i][3]);
+        // dda(hi[i][0], hi[i][1], hi[i][2], hi[i][3]);
     }
 
-    dda(75+8*25,75+5*25,75+8*25,75+0*25)
-    bsh(75+9*25,75+5*25,75+9*25,75+0*25)
-    mpl(75+10*25,75+0*25,75+10*25,75+10*25)
+    // dda(75+8*25,75+5*25,75+8*25,75+0*25);
+    // bsh(75+9*25,75+5*25,75+9*25,75+0*25);
+    // mpl(75+10*25,75+0*25,75+10*25,75+10*25);
+mpl(10,15,30,40);

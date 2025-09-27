@@ -1,37 +1,17 @@
-// midpoint line drawing algorithm
-
 function mpl(x0, y0, x1, y1) {
-    let xDif = x1 - x0;
-    let yDif = y1 - y0;
+    let dx = Math.abs(x1 - x0),
+        dy = Math.abs(y1 - y0),
+        sx = x0 < x1 ? 1 : -1,
+        sy = y0 < y1 ? 1 : -1,
+        err = dx - dy;
 
-    let d0 = 2 * yDif - xDif;     // dkCurrent
-    let dDif = 2 * (yDif - xDif);
-
-    // ctx.fillRect(x0, y0, 2, 2);
-    let currentPoint = [x0, y0];
-    let nextPoint = [0, 0];
-    // console.log(d0, currentPoint)
-
-    // while (nextPoint[0] != x1 && nextPoint[1] != y1) {
-    let n;
-    if (Math.abs(x1 - x0) > Math.abs(y1 - y0)) {
-        n = Math.abs(x1 - x0);
-    } else {
-        n = Math.abs(y1 - y0);
+    while (true) {
+        console.log(`Plot: (${x0}, ${y0}), err=${err}`);
+        if (x0 === x1 && y0 === y1) break;
+        let e2 = 2 * err;
+        if (e2 > -dy) { err -= dy; x0 += sx; }
+        if (e2 <  dx) { err += dx; y0 += sy; }
     }
-
-    for (let i = 0; i < n; i++) {
-        if (d0 < 0) {
-            currentPoint = [currentPoint[0] + 1, currentPoint[1]];
-            d0 = d0 + 2 * yDif;   // dk+1
-            // console.log(d0, currentPoint);
-            ctx.fillRect(currentPoint[0], currentPoint[1], 2, 2);
-        } else if (d0 >= 0) {
-            currentPoint = [currentPoint[0] + 1, currentPoint[1] + 1];
-            d0 = d0 + 2 * dDif;
-            // console.log(d0, currentPoint);
-            ctx.fillRect(currentPoint[0], currentPoint[1], 2, 2);
-        }
-    }
-    // console.log(d0, currentPoint);
 }
+
+mpl(20,10,30,18);
