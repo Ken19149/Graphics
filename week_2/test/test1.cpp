@@ -1,5 +1,4 @@
-#include <OpenGL/gl.h>
-#include <GLUT/glut.h>
+#include <GL/glut.h>
 void display() {
 glClear(GL_COLOR_BUFFER_BIT);
 // Draw a red line from (0.1, 0.1) to (0.9, 0.9)
