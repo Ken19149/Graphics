@@ -108,6 +108,7 @@ void Identity(double Matrix[3][3]) {
     }
 }
 
+
 void doMxM(double A[3][3], double B[3][3], double S[3][3]) {
     // TODO: Multiply two 3x3 matrices: C = A × B
     for (int i=0;i<3;i++) {
@@ -119,10 +120,22 @@ void doMxM(double A[3][3], double B[3][3], double S[3][3]) {
 
 void displayM(double A[3][3]) {
     // TODO: Display matrix in a readable format
+    std::cout << std::fixed << std::setprecision(0);
+    for (int i=0;i<3;i++) {
+        std::cout << "[ ";
+        for (int j=0;j<3;j++) {
+            std::cout << (A[i][j]) << " ";
+        }
+        std::cout << "]" << std::endl;
+    }
 }
 
 void displayV(double A[3]) {
     // TODO: Display vector in a readable format
+    std::cout << std::fixed << std::setprecision(0);
+    for (int i=0;i<3;i++) {
+        std::cout << "[ " << A[i] << " ]" << std::endl;
+    }
 }
 
 // Shape creation functions
