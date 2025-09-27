@@ -56,9 +56,9 @@ void scale(double sx, double sy);
 void drawDot(int x, int y, double r, double g, double b) {
     // TODO: Implement dot drawing using OpenGL
     // Hint: Use glBegin(GL_POINTS), glColor3f(), glVertex2i(), glEnd()
-    glBegin(GL_POINT);
+    glBegin(GL_POINTS);
     glColor3f(r, g, b);
-    glVertex2i(x, y);
+    glVertex2i(x, height - y);
     glEnd();
 }
 
@@ -118,6 +118,13 @@ void doMxM(double A[3][3], double B[3][3], double S[3][3]) {
     }
 }
 
+void doMxV(double A[3][3], double B[3], double S[3]) {
+    // TODO: Multiply matrix A by vector B, store result in S
+    for (int i=0;i<3;i++) {
+        S[i] = A[i][0]*B[0] +  A[i][1]*B[1] + A[i][2]*B[2]; 
+    }
+}
+
 void displayM(double A[3][3]) {
     // TODO: Display matrix in a readable format
     std::cout << std::fixed << std::setprecision(0);
@@ -142,11 +149,34 @@ void displayV(double A[3]) {
 void Square() {
     // TODO: Create a unit square centered at origin
     // Store the 4 corner points after applying current transformation matrix
+    double S[4][3];
+    S[0][0] = 1.0;
+    S[0][1] = 1.0;
+    S[0][2] = 1.0;
+    S[1][0] = -1.0;
+    S[1][1] = 1.0;
+    S[1][2] = 1.0;
+    S[2][0] = -1.0;
+    S[2][1] = -1.0;
+    S[2][2] = 1.0;
+    S[3][0] = 1.0;
+    S[3][1] = -1.0;
+    S[3][2] = 1.0;
 }
 
 void Triangle() {
     // TODO: Create a triangle with points (0,1), (-1,-1), (1,-1)
     // Store the 3 points after applying current transformation matrix
+    double T[3][3];
+    T[0][0] = 0.0;
+    T[0][1] = 1.0;
+    T[0][2] = 1.0;
+    T[1][0] = -1.0;
+    T[1][1] = -1.0;
+    T[1][2] = 1.0;
+    T[2][0] = 1.0;
+    T[2][1] = -1.0;
+    T[2][2] = 1.0;
 }
 
 // Drawing functions
@@ -154,17 +184,31 @@ void drawSquare() {
     // TODO: Draw all stored squares
     // For each square, draw 4 lines connecting the points
     // Apply viewport transformation before drawing
+    double S[4][3];
+    for (int i=0;i<4;i++) {
+        drawLine(S[i][0], S[i][1], S[i+1][0], S[i+1][1]);
+    }
+    drawLine(S[3][0], S[3][1], S[0][0], S[0][1]);
 }
 
 void drawTriangle() {
     // TODO: Draw all stored triangles
     // For each triangle, draw 3 lines connecting the points
     // Apply viewport transformation before drawing
+    double T[3][3];
+    for (int i=0;i<3;i++) {
+        drawLine(T[i][0], T[i][1], T[i+1][0], T[i+1][1]);
+    }
+    drawLine(T[2][0], T[2][1], T[0][0], T[0][1]);
 }
 
 void drawViewport(double VL, double VR, double VB, double VT) {
     // TODO: Draw the viewport boundary as a rectangle
     // Use drawLine() to draw the four sides
+    drawLine(VR, VT, VR, VB);
+    drawLine(VR, VB, VL, VB);
+    drawLine(VL, VB, VL, VT);
+    drawLine(VL, VT, VR, VT);
 }
 
 // Transformation functions - Students implement these
@@ -187,7 +231,7 @@ void readFile() {
     string command;
     string filename = "hw2.in"; // Students can change this for testing
     ifstream fin(filename);
-    
+
     if(fin.is_open()) {
         while(fin >> command) {
             if(command.find("#") != command.npos) {
