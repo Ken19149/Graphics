@@ -215,15 +215,21 @@ void drawViewport(double VL, double VR, double VB, double VT) {
 void translate(double dx, double dy) {
     // TODO: Create translation matrix and update current transformation
     // TM = translation matrix, CM = cumulative transformation
+    double TM[3][3] = {{1,0,dx},{0,1,dy},{0,0,1}};
+    doMxM(TM, CM, CM);
 }
 
 void rotate(double degree) {
     // TODO: Create rotation matrix and update current transformation
     // Convert degrees to radians first
+    double RM[3][3] = {{cos(degree), -sin(degree), 0},{sin(degree), cos(degree), 0},{0,0,1}};
+    doMxM(RM, CM, CM);
 }
 
 void scale(double sx, double sy) {
     // TODO: Create scaling matrix and update current transformation
+    double SM[3][3] = {{1,sx,0},{0,sy,0},{0,0,1}};
+    doMxM(SM, CM, CM);
 }
 
 // File reading function - Provided to students

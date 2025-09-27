@@ -46,7 +46,7 @@ void display() {
     glVertex2i(0, -1); // End point
     glEnd();
     */
-    drawLine(-10,-10,10,10);
+    drawLine(10,10,100,200);
     glBegin(GL_POINTS); // Start drawing points
     glColor3f(0, 1, 1);
         // glVertex2f(-0.5f, 0.5f); // Define a point
@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
     glutInitWindowSize(width, height);
     glutCreateWindow("OpenGL Line");
     glutDisplayFunc(display);
-    gluOrtho2D(0, winSizeX, 0, winSizeY);
+    gluOrtho2D(0, width, 0, height);
     glutMainLoop();
     return 0;
 }

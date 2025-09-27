@@ -5,6 +5,8 @@
 #include <fstream>
 #include <string>
 
+#define DegreesToRadius 0.017460317460317460317460317460317
+
 void doMxM(double A[3][3], double B[3][3], double C[3][3]) {
     // TODO: Multiply two 3x3 matrices: C = A × B
     for (int i=0;i<3;i++) {
@@ -55,5 +57,6 @@ int main() {
     displayV(V);
     doMxV(C, V, S);
     displayV(S);
+    std::cout << sin(30*DegreesToRadius);
     return 0;
 }
