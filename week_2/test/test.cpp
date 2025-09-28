@@ -57,6 +57,14 @@ int main() {
     displayV(V);
     doMxV(C, V, S);
     displayV(S);
-    std::cout << sin(30*DegreesToRadius);
+
+    double a = 0.4;
+    double b = 1.4;
+    
+    std::cout << std::fixed << std::setprecision(0);
+    double c = a+b;
+    std::cout << c << std::endl;
+    std::cout << std::fixed << std::setprecision(8);
+    std::cout << std::cos(60*DegreesToRadius) << std::endl;
     return 0;
 }

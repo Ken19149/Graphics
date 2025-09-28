@@ -127,7 +127,7 @@ void doMxV(double A[3][3], double B[3], double S[3]) {
 
 void displayM(double A[3][3]) {
     // TODO: Display matrix in a readable format
-    std::cout << std::fixed << std::setprecision(0);
+    std::cout << std::fixed << std::setprecision(2);
     for (int i=0;i<3;i++) {
         std::cout << "[ ";
         for (int j=0;j<3;j++) {
@@ -139,7 +139,7 @@ void displayM(double A[3][3]) {
 
 void displayV(double A[3]) {
     // TODO: Display vector in a readable format
-    std::cout << std::fixed << std::setprecision(0);
+    std::cout << std::fixed << std::setprecision(2);
     for (int i=0;i<3;i++) {
         std::cout << "[ " << A[i] << " ]" << std::endl;
     }
@@ -186,7 +186,12 @@ void drawSquare() {
     // Apply viewport transformation before drawing
     double S[4][3];
     for (int i=0;i<4;i++) {
+        // doMxV(CM, S[i], S[i]);
+    }
+    for (int i=0;i<4;i++) {
         drawLine(S[i][0], S[i][1], S[i+1][0], S[i+1][1]);
+        std::cout << S[i][0] << " " << S[i][1] << " " << S[i+1][0] << " " << S[i+1][1] << std::endl;
+        displayV(S[i]);
     }
     drawLine(S[3][0], S[3][1], S[0][0], S[0][1]);
 }
@@ -196,6 +201,9 @@ void drawTriangle() {
     // For each triangle, draw 3 lines connecting the points
     // Apply viewport transformation before drawing
     double T[3][3];
+    for (int i=0;i<3;i++) {
+        doMxV(CM, T[i], T[i]);
+    }
     for (int i=0;i<3;i++) {
         drawLine(T[i][0], T[i][1], T[i+1][0], T[i+1][1]);
     }
@@ -222,7 +230,7 @@ void translate(double dx, double dy) {
 void rotate(double degree) {
     // TODO: Create rotation matrix and update current transformation
     // Convert degrees to radians first
-    double RM[3][3] = {{cos(degree), -sin(degree), 0},{sin(degree), cos(degree), 0},{0,0,1}};
+    double RM[3][3] = {{cos(degree*DegreesToRadius), -sin(degree*DegreesToRadius), 0},{sin(degree*DegreesToRadius), cos(degree*DegreesToRadius), 0},{0,0,1}};
     doMxM(RM, CM, CM);
 }
 
