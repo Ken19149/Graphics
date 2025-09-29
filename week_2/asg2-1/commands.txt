@@ -4,6 +4,8 @@ viewport 100 700 100 500
 # Lines that will be clipped
 line 10 200 200 250 # Crosses left and right boundaries
 line 200 150 200 350 # Crosses top and bottom boundaries
-#line 150 150 650 450 # Fully inside viewport
-#line 50 50 50 50 # Single point outside (won't draw)
-#line 300 300 500 300 # Horizontal line inside viewport
+line 150 150 650 450 # Fully inside viewport
+line 50 50 50 50 # Single point outside (won't draw)
+line 300 300 500 300 # Horizontal line inside viewport
+line 110 110 120 120
+line 10 10 400 400
