@@ -1,3 +1,5 @@
+/* Report at the bottom of the code */
+
 // simplified_line_clipping_fixed.cpp
 #define GL_SILENCE_DEPRECATION
 #include <iostream>
@@ -252,3 +254,26 @@ int main(int ac, char **av)
     glutMainLoop();
     return 0;
 }
+
+/* REPORT
+Chavangkon Kanjanakutdit (Ken) 6681371
+https://github.com/Ken19149/Graphics/tree/main/week_2/asg2-1
+
+function: description
+drawDot: draw dot at specific x,y coordinate with rgb color
+drawLine: draw line using DDA algorithm and drawDot function from point1 to point2
+getRegionCode: check of a point is inside or outside the viewport
+clipAndDrawLine: check if the line has a part outside the viewport and need to draw only on the inside
+drawViewport: the name is self-explanatory
+displayInfo: show information about the display size
+readAndProcessCommands: read data from commands.txt and use the information to draw viewport and lines
+
+for this assignment i tried drawing a star but the calculation for the pentagonal star is a bit more tedious than i expected so i switched to drawing a hexagonal star which is basically 2 equilaterl triangles layered on top of each other.
+i used bottomleft edge as the origin and draw from there. equilateral triangle is easier to calculate with 30 and 60 degrees so i used this shape to draw.
+i realized later that using a unit triangle i learned from the previous lesson might have been easier but too late, already did that now.
+then i used python to calculate the coordinates needed for drawing the shape with 3 variables for x and y transformation and another one for scaling.
+finally i copy the output and paste it into the commands.txt file and adjust the values as needed.
+
+i could've improved it by letting it edit the commands.txt and run the .exe file after running the star.py file instead of copy the output to clipboard and paste it.
+anyway, that's the end of my report :D
+*/

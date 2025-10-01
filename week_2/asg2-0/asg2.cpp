@@ -1,5 +1,5 @@
 // hw2_starter.cpp : Basic framework for 2D transformations and viewing
-// 
+// report at the bottom
 #define GL_SILENCE_DEPRECATION
 
 #include <iostream>
@@ -355,3 +355,23 @@ int main(int ac, char** av) {
     glutMainLoop();
     return 0;
 }
+
+/*
+Chavangkon Kanjanakuldit (Ken) 6681371
+https://github.com/Ken19149/Graphics/tree/main/week_2/asg2-0
+https://github.com/Ken19149/Graphics/tree/main/week_2/test
+
+I finished drawDot, drawLine, Zero, and Identity functions during class time.
+I continued and finished the rest of the functions later, and most of it works.
+Still, I have a few problems in some functions. I don't understand why the storage S[MAX][MAX][4][3] for square has the 50x50 matrix before storing points.
+Another problem I encountered is drawSquare. I'm not quite sure about applying the transformation before drawing step.
+Other than that, I have no problem with matrix multiplication function.
+I created multiple test files to run the smaller functions separately.
+For displaying matrix and vector array, I'm not so sure how you would do it, but I just print each element with brackets surrounding the number and new line to separate them.
+One of the problem I met with was the program couldn't detect the input file after compiling and run. I noticed later that the working directory is different from file location.
+So I learned that I have to either move my working directory or move the input file.
+Also, at first when the viewport appeared but not the line I thought for quite a while what could be the problem.
+I printed the square matrix and saw the value was very small. Like 0, 0, 7.4515415e-300 or something like that.
+So I think the problem is in how I don't understand how does the storing data in S[] matrix works.
+Even though it's not complete, I did many of the functions and this is my progress so far. 
+*/
