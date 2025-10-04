@@ -374,4 +374,6 @@ Also, at first when the viewport appeared but not the line I thought for quite a
 I printed the square matrix and saw the value was very small. Like 0, 0, 7.4515415e-300 or something like that.
 So I think the problem is in how I don't understand how does the storing data in S[] matrix works.
 Even though it's not complete, I did many of the functions and this is my progress so far. 
+
+P.S. i just noticed you uploaded a book when i was about to send, oops
 */
