@@ -1,0 +1,1 @@
+g++ code.cpp -o code -lglut -lGLU -lGL -lX11 -lm
