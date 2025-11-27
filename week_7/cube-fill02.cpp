@@ -3,11 +3,12 @@
 #include <stdlib.h>
 #include <cmath>
 
-GLuint textureID;
+// GLuint textureID;
 
 // Create a simple checkerboard texture programmatically
-void createCheckerboardTexture(int x)
+GLuint createCheckerboardTexture(int x)
 {
+    GLuint textureID;
     const int texSize = (int) pow(2, x);
     GLubyte texture[texSize][texSize][3];
     for (int i = 0; i < texSize; i++)
@@ -30,12 +31,14 @@ void createCheckerboardTexture(int x)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    return textureID;
 }
 
 // Function to draw a textured cube manually
-void drawTexturedCube()
+void drawTexturedCube(int x)
 {
-    glBindTexture(GL_TEXTURE_2D, textureID);
+    // glBindTexture(GL_TEXTURE_2D, textureID);
+    glBindTexture(GL_TEXTURE_2D, createCheckerboardTexture(x));
     glBegin(GL_QUADS);
     // Front face
     glTexCoord2f(0.0f, 0.0f);
@@ -105,7 +108,7 @@ void display()
     // Draw textured cube in the center
     glEnable(GL_TEXTURE_2D);
     glColor3f(1.0f, 1.0f, 1.0f);
-    drawTexturedCube();
+    drawTexturedCube(4);
     glDisable(GL_TEXTURE_2D);
 
     // Draw additional colored cubes around the center
@@ -114,30 +117,36 @@ void display()
     glTranslatef(2.0f, 0.0f, 0.0f);
     glColor3f(0.0f, 1.0f, 0.0f); // Green color
     glutSolidCube(0.5);
-    drawTexturedCube();
+    drawTexturedCube(5);
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 
+    glEnable(GL_TEXTURE_2D);
     glPushMatrix();
     glTranslatef(-2.0f, 0.0f, 0.0f);
     glColor3f(0.0f, 0.0f, 1.0f); // Blue color
-    glutSolidCube(1.0);
-    drawTexturedCube();
+    glutSolidCube(0.5);
+    drawTexturedCube(6);
     glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
 
+    glEnable(GL_TEXTURE_2D);
     glPushMatrix();
     glTranslatef(0.0f, 2.0f, 0.0f);
     glColor3f(1.0f, 1.0f, 0.0f); // Yellow color
     glutSolidCube(0.5);
-    drawTexturedCube();
+    drawTexturedCube(7);
     glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
 
+    glEnable(GL_TEXTURE_2D);
     glPushMatrix();
     glTranslatef(0.0f, -2.0f, 0.0f);
     glColor3f(1.0f, 0.0f, 1.0f); // Magenta color
-    drawTexturedCube();
+    drawTexturedCube(8);
     glutSolidCube(0.5);
     glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
 
     glutSwapBuffers();
 }
@@ -179,7 +188,7 @@ void init()
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
     // Create checkerboard texture
-    createCheckerboardTexture(8);
+    // createCheckerboardTexture(6);
 }
 
 int main(int argc, char **argv)

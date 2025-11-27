@@ -97,7 +97,7 @@ void display() {
     
     // Draw textured cube in the center
     glEnable(GL_TEXTURE_2D);
-    drawTexturedCube(loadTexture("C:\\Users\\Student\\Ken 6681371\\Graphics\\week_7\\textures\\hello_adjust.jpg")); // center
+    drawTexturedCube(loadTexture("textures/hello_adjust.jpg")); // center
     // drawTexturedCube();
     glDisable(GL_TEXTURE_2D);
     
@@ -107,7 +107,7 @@ void display() {
     glTranslatef(2.0f, 0.0f, 0.0f);
     // glColor3f(0.0f, 1.0f, 0.0f); // Green color
     // glutSolidCube(0.5);
-    drawTexturedCube(loadTexture("C:\\Users\\Student\\Ken 6681371\\Graphics\\week_7\\textures\\ken_adjust.jpg")); // near
+    drawTexturedCube(loadTexture("textures/ken_adjust.jpg")); // near
     // drawTexturedCube();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
@@ -115,14 +115,14 @@ void display() {
     glEnable(GL_TEXTURE_2D);
     glPushMatrix();
     glTranslatef(-2.0f, 0.0f, 0.0f);
-    drawTexturedCube(loadTexture("C:\\Users\\Student\\Ken 6681371\\Graphics\\week_7\\textures\\pattern.jpg")); // back
+    drawTexturedCube(loadTexture("textures/pattern.jpg")); // back 
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
     
     glEnable(GL_TEXTURE_2D);
     glPushMatrix();
     glTranslatef(0.0f, 2.0f, 0.0f);
-    drawTexturedCube(loadTexture("C:\\Users\\Student\\Ken 6681371\\Graphics\\week_7\\textures\\top.jpg")); // top
+    drawTexturedCube(loadTexture("textures/top.jpg")); // top 
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
     
@@ -130,7 +130,7 @@ void display() {
     glPushMatrix();
     glTranslatef(0.0f, -2.0f, 0.0f);
     glScalef(0.5f, 0.5f, 0.5f);
-    drawTexturedCube(loadTexture("C:\\Users\\Student\\Ken 6681371\\Graphics\\week_7\\textures\\creeper.jpg")); // bottom
+    drawTexturedCube(loadTexture("textures/creeper.jpg")); // bottom 
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
     
